@@ -18,17 +18,26 @@
 # Input: nums = [3,3], target = 6
 # Output: [0,1]
 
-def towSum(nums, target):
-    if len(nums) <= 1:
-        return
-    for i, num1 in enumerate(nums):
-        for j, num2 in enumerate(nums[1:], start=1):
-            print(j)
-            if num1 + num2 == target:
-                return [i,j]
-    
+#Brute force solution
+# def twoSum(nums, target):
+#     if len(nums) <= 1:
+#         return
+#     for i, num1 in enumerate(nums):
+#         for j, num2 in enumerate(nums[1:], start=1):
+#             print(j)
+#             if num1 + num2 == target:
+#                 return [i,j]
+
+def twoSum(nums, target):
+    hashmap = {}
+    for index, num in enumerate(nums):
+        diff = target - num
+        if diff in hashmap:
+            return [index, hashmap[diff]]
+        else:
+            hashmap[num] = index
 
 
 nums = [3,3]
 target = 6
-print(towSum(nums, target))
+print(twoSum(nums, target))
